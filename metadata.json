@@ -1,0 +1,5 @@
+{
+  "name": "CoverFlow AI",
+  "description": "Create viral video thumbnails instantly using Gemini 3.0. Upload your assets, choose a style reference, and generate high-quality covers for YouTube, TikTok, and more.",
+  "requestFramePermissions": []
+}
