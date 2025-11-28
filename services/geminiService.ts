@@ -106,22 +106,22 @@ const generateWithGemini = async ({ data, model, apiKey }: GenerationRequest): P
     parts.push({ text: "This is the [REFERENCE IMAGE] for style." });
   }
 
-  // Gemini handles complex instructions well, use the standard robust prompt
   const prompt = buildPrompt(data);
   parts.push({ text: prompt });
 
-  const config: any = {
-    imageConfig: { aspectRatio: data.aspectRatio },
-  };
-  
-  // imageSize only for 3-pro
-  if (model.includes('gemini-3-pro')) {
-    config.imageConfig.imageSize = "1K";
-  }
+  // Internal helper to perform the call
+  const executeCall = async (targetModel: string) => {
+    const config: any = {
+      imageConfig: { aspectRatio: data.aspectRatio },
+    };
+    
+    // imageSize only for 3-pro, cause error on flash
+    if (targetModel.includes('gemini-3-pro')) {
+      config.imageConfig.imageSize = "1K";
+    }
 
-  try {
     const response = await ai.models.generateContent({
-      model: model,
+      model: targetModel,
       contents: { parts: parts },
       config: config,
     });
@@ -134,7 +134,11 @@ const generateWithGemini = async ({ data, model, apiKey }: GenerationRequest): P
         }
       }
     }
+    return images;
+  };
 
+  try {
+    const images = await executeCall(model);
     if (images.length === 0) throw new Error("Gemini 生成完成，但没有返回图片数据。");
     return images;
 
@@ -143,7 +147,20 @@ const generateWithGemini = async ({ data, model, apiKey }: GenerationRequest): P
     
     // Check for 403 Permission Denied
     if (error.status === 403 || error.message?.includes("PERMISSION_DENIED") || error.message?.includes("permission")) {
-        throw new Error("权限拒绝 (403): 您的 API Key 没有权限调用此模型。原因可能为：1. Key 无效。2. 该项目未启用 API。3. Gemini 3.0 Pro 可能需要付费项目的 Key。请尝试切换到 'Gemini 2.5 Flash' 模型。");
+        // AUTO FALLBACK LOGIC
+        if (model.includes('gemini-3-pro')) {
+            console.warn("Gemini 3.0 Pro 403 Error. Attempting fallback to Gemini 2.5 Flash...");
+            try {
+                // Retry with Flash model
+                const fallbackImages = await executeCall('gemini-2.5-flash-image');
+                 if (fallbackImages.length > 0) return fallbackImages;
+            } catch (fallbackError: any) {
+                console.error("Fallback failed:", fallbackError);
+                // Throw the original error explanation if fallback also fails
+            }
+        }
+
+        throw new Error("权限拒绝 (403): 您的 Key 无法调用 Gemini 3.0 Pro。通常这需要绑定计费账户的 Google Cloud 项目。已尝试自动切换到 Flash 模型但也失败。建议直接在设置中选择 'Gemini 2.5 Flash'。");
     }
 
     // Catch specific networking/RPC errors
