@@ -31,45 +31,16 @@ export const MODEL_PROVIDERS: ProviderConfig[] = [
   },
   {
     id: ModelProvider.SILICONFLOW,
-    name: 'SiliconFlow (Flux)',
+    name: 'SiliconFlow',
     icon: '🌊',
     apiKeyPlaceholder: 'sk-cn-...',
     website: 'https://cloud.siliconflow.cn/',
     models: [
       { id: 'black-forest-labs/FLUX.1-schnell', name: 'FLUX.1 Schnell', badge: 'Speed', description: 'Very fast, high quality' },
       { id: 'black-forest-labs/FLUX.1-dev', name: 'FLUX.1 Dev', badge: 'Balanced', description: 'Developer version' },
-      { id: 'stabilityai/stable-diffusion-3-medium', name: 'SD 3 Medium', description: 'Stable Diffusion 3' }
-    ]
-  },
-  {
-    id: ModelProvider.DOUBAO,
-    name: 'Doubao (ByteDance)',
-    icon: '🫘',
-    apiKeyPlaceholder: 'Key...',
-    website: 'https://www.volcengine.com/',
-    models: [
-      { id: 'doubao-image-v1', name: 'Doubao Image V1' },
-    ]
-  },
-  {
-    id: ModelProvider.GLM,
-    name: 'Zhipu GLM',
-    icon: '🤖',
-    apiKeyPlaceholder: 'Key...',
-    website: 'https://open.bigmodel.cn/',
-    models: [
-      { id: 'cogview-3-plus', name: 'CogView-3 Plus', badge: 'New' },
-      { id: 'cogview-3', name: 'CogView-3' }
-    ]
-  },
-  {
-    id: ModelProvider.QWEN,
-    name: 'Qwen (Wanxiang)',
-    icon: '☁️',
-    apiKeyPlaceholder: 'sk-...',
-    website: 'https://dashscope.aliyun.com/',
-    models: [
-      { id: 'wanx-v1', name: 'Wanxiang V1' }
+      { id: 'stabilityai/stable-diffusion-3-medium', name: 'SD 3 Medium', description: 'Stable Diffusion 3' },
+      { id: 'THUDM/glm-4-9b-chat', name: 'GLM-4 (via SiliconFlow)', description: 'Zhipu GLM' },
+      { id: 'Qwen/Qwen2.5-7B-Instruct', name: 'Qwen 2.5 (via SiliconFlow)', description: 'Alibaba Qwen' }
     ]
   }
 ];
@@ -78,16 +49,10 @@ export const DEFAULT_SETTINGS = {
   activeProvider: ModelProvider.GEMINI,
   apiKeys: {
     [ModelProvider.GEMINI]: '',
-    [ModelProvider.SILICONFLOW]: '',
-    [ModelProvider.DOUBAO]: '',
-    [ModelProvider.GLM]: '',
-    [ModelProvider.QWEN]: ''
+    [ModelProvider.SILICONFLOW]: ''
   },
   selectedModels: {
     [ModelProvider.GEMINI]: 'gemini-3-pro-image-preview',
-    [ModelProvider.SILICONFLOW]: 'black-forest-labs/FLUX.1-schnell',
-    [ModelProvider.DOUBAO]: 'doubao-image-v1',
-    [ModelProvider.GLM]: 'cogview-3-plus',
-    [ModelProvider.QWEN]: 'wanx-v1'
+    [ModelProvider.SILICONFLOW]: 'black-forest-labs/FLUX.1-schnell'
   }
 };

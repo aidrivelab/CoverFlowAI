@@ -15,10 +15,7 @@ export enum AspectRatio {
 
 export enum ModelProvider {
   GEMINI = 'gemini',
-  SILICONFLOW = 'siliconflow',
-  DOUBAO = 'doubao',
-  GLM = 'glm',
-  QWEN = 'qwen'
+  SILICONFLOW = 'siliconflow'
 }
 
 export interface ModelOption {
