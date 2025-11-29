@@ -7,8 +7,8 @@ import { generateCoverImage, requestApiKeySelection, checkApiKey } from './servi
 
 function App() {
   const [formData, setFormData] = useState<CoverFormData>({
-    mainTitle: '小白如何0基础学Web3',
-    subTitle: '5分钟入门 | 最强指南',
+    mainTitle: 'you were meant for more…',
+    subTitle: 'AiDriveLabe',
     subjectImage: null,
     referenceImage: null,
     instruction: DEFAULT_INSTRUCTION,

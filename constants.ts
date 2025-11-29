@@ -19,7 +19,7 @@ export const ASPECT_RATIOS = [
   { id: AspectRatio.RATIO_1_1, label: '1:1 (Square)' },
 ];
 
-export const DEFAULT_INSTRUCTION = "把右边的人物改成我（左图）。重新规划右边的评论块的设计，但是评论的发言人是我“AI驱动创新”，评论的内容是“小白如何快速入门Web3”。";
+export const DEFAULT_INSTRUCTION = "将对标模仿图中的人物替换为视觉素材中的人物，要求人物神态风格、人物姿势，拍摄滤镜等都能够准确还原对标模仿图像。";
 
 export const MODEL_PROVIDERS: ProviderConfig[] = [
   {
