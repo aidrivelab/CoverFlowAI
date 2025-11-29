@@ -19,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenSettings, activeProvider, current
         <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
           <span className="text-white font-bold text-lg">C</span>
         </div>
-        <h1 className="text-xl font-bold text-gray-900 tracking-tight">CoverFlow AI</h1>
+        <h1 className="text-xl font-bold text-gray-900 tracking-tight">CoverFlow AI-By AI驱动创新</h1>
       </div>
       <div className="flex items-center gap-3">
         <div className="hidden sm:flex bg-orange-50 text-orange-700 px-3 py-1 rounded-full text-xs font-bold border border-orange-100 items-center gap-1">
