@@ -1,8 +1,12 @@
 export enum Platform {
+  XIAOHONGSHU = 'XiaoHongShu',
+  WECHAT = 'WeChat',
+  ZHIHU = 'Zhihu',
+  DOUYIN = 'Douyin',
+  BILIBILI = 'Bilibili',
   YOUTUBE = 'YouTube',
-  TIKTOK = 'TikTok/Douyin',
-  INSTAGRAM = 'Instagram/XiaoHongShu',
-  BILIBILI = 'Bilibili'
+  TIKTOK = 'TikTok',
+  INSTAGRAM = 'Instagram'
 }
 
 export enum AspectRatio {

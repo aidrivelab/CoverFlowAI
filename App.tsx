@@ -12,8 +12,8 @@ function App() {
     subjectImage: null,
     referenceImage: null,
     instruction: DEFAULT_INSTRUCTION,
-    platform: Platform.YOUTUBE,
-    aspectRatio: AspectRatio.RATIO_16_9
+    platform: Platform.XIAOHONGSHU,
+    aspectRatio: AspectRatio.RATIO_3_4
   });
 
   const [subjectPreview, setSubjectPreview] = useState<string | undefined>(undefined);

@@ -1,10 +1,14 @@
 import { AspectRatio, ModelProvider, Platform, ProviderConfig } from "./types";
 
 export const PLATFORMS = [
-  { id: Platform.YOUTUBE, label: 'YouTube', defaultRatio: AspectRatio.RATIO_16_9, icon: '📺' },
-  { id: Platform.TIKTOK, label: 'TikTok / Douyin', defaultRatio: AspectRatio.RATIO_9_16, icon: '📱' },
-  { id: Platform.INSTAGRAM, label: 'Instagram / XiaoHongShu', defaultRatio: AspectRatio.RATIO_3_4, icon: '📸' },
-  { id: Platform.BILIBILI, label: 'Bilibili', defaultRatio: AspectRatio.RATIO_16_9, icon: '⏯️' },
+  { id: Platform.XIAOHONGSHU, label: '小红书', defaultRatio: AspectRatio.RATIO_3_4, icon: '📕' },
+  { id: Platform.WECHAT, label: '微信公众号', defaultRatio: AspectRatio.RATIO_16_9, icon: '🟢' },
+  { id: Platform.ZHIHU, label: '知乎', defaultRatio: AspectRatio.RATIO_16_9, icon: '🔵' },
+  { id: Platform.DOUYIN, label: '抖音', defaultRatio: AspectRatio.RATIO_9_16, icon: '🎵' },
+  { id: Platform.BILIBILI, label: 'Bilibili', defaultRatio: AspectRatio.RATIO_16_9, icon: '📺' },
+  { id: Platform.YOUTUBE, label: 'YouTube', defaultRatio: AspectRatio.RATIO_16_9, icon: '🟥' },
+  { id: Platform.TIKTOK, label: 'TikTok', defaultRatio: AspectRatio.RATIO_9_16, icon: '📱' },
+  { id: Platform.INSTAGRAM, label: 'Instagram', defaultRatio: AspectRatio.RATIO_1_1, icon: '📸' },
 ];
 
 export const ASPECT_RATIOS = [
