@@ -163,6 +163,11 @@ const generateWithGemini = async ({ data, model, apiKey }: GenerationRequest): P
         throw new Error("权限拒绝 (403): 您的 Key 无法调用 Gemini 3.0 Pro。通常这需要绑定计费账户的 Google Cloud 项目。已尝试自动切换到 Flash 模型但也失败。建议直接在设置中选择 'Gemini 2.5 Flash'。");
     }
 
+    // Check for 429 Resource Exhausted / Quota Exceeded
+    if (error.status === 429 || error.code === 429 || error.message?.includes("RESOURCE_EXHAUSTED") || error.message?.includes("quota")) {
+      throw new Error("配额不足 (429): 您的 Google Cloud 项目免费配额已用完 (Limit: 0)，或未启用 Billing。建议：\n1. 在 Google Cloud Console 绑定计费账户。\n2. 或在设置中切换使用 SiliconFlow (硅基流动) 等其他服务商。");
+    }
+
     // Catch specific networking/RPC errors
     if (error.message?.includes("xhr error") || error.message?.includes("Rpc failed") || error.message?.includes("Fetch failure")) {
         throw new Error("网络连接失败：无法连接到 Google 服务。请检查您的网络连接或 VPN 设置 (Network Error).");

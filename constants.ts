@@ -19,7 +19,7 @@ export const ASPECT_RATIOS = [
   { id: AspectRatio.RATIO_1_1, label: '1:1 (Square)' },
 ];
 
-export const DEFAULT_INSTRUCTION = "把右边的人物改成我（左图）。保留右边的评论块的设计，但是评论的发言人是我“Gloria”，评论的内容是“小白如何快速入门Web3”。";
+export const DEFAULT_INSTRUCTION = "把右边的人物改成我（左图）。重新规划右边的评论块的设计，但是评论的发言人是我“AI驱动创新”，评论的内容是“小白如何快速入门Web3”。";
 
 export const MODEL_PROVIDERS: ProviderConfig[] = [
   {
