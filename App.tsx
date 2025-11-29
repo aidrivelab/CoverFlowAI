@@ -111,6 +111,15 @@ function App() {
     }));
   };
 
+  const handleClearData = () => {
+    if (window.confirm('确定要清除所有本地存储的 API Key 和设置吗？\n清除后您需要重新输入 Key。')) {
+      localStorage.removeItem('coverflow_settings_v1');
+      setSettings(DEFAULT_SETTINGS);
+      setTempApiKey('');
+      alert('所有本地数据已清除。');
+    }
+  };
+
   const activeProviderConfig = MODEL_PROVIDERS.find(p => p.id === settings.activeProvider);
 
   return (
@@ -192,6 +201,15 @@ function App() {
                            )}
                          </div>
                        </div>
+                       
+                       {/* Security Disclaimer */}
+                       <div className="flex items-start gap-2 bg-yellow-50 text-yellow-800 p-3 rounded-lg text-xs mt-2 border border-yellow-100">
+                          <svg className="w-4 h-4 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                          <p>
+                             安全提示：您的 API Key 仅存储在浏览器的 LocalStorage 中，并直接发送给服务提供商。它永远不会上传到我们的服务器。
+                          </p>
+                       </div>
+
                        {activeProviderConfig.id === ModelProvider.GEMINI && (
                          <div className="flex items-center gap-2 mt-2">
                             <span className="text-xs text-gray-500">Or use Google Auth:</span>
@@ -251,7 +269,13 @@ function App() {
                </div>
              </div>
 
-             <div className="p-4 border-t border-gray-100 bg-gray-50 flex justify-end">
+             <div className="p-4 border-t border-gray-100 bg-gray-50 flex justify-between items-center">
+               <button 
+                  onClick={handleClearData}
+                  className="px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg text-sm font-medium transition-colors"
+               >
+                  清除所有数据
+               </button>
                <button 
                  onClick={() => setShowSettings(false)}
                  className="px-6 py-2.5 bg-gray-900 hover:bg-gray-800 text-white rounded-xl font-medium transition-colors"
